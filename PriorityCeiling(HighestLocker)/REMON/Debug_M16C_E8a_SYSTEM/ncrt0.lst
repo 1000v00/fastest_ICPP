@@ -1,0 +1,248 @@
+* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Tue Oct 18 04:37:09 2022  PAGE 001
+
+  SEQ.  LOC.   OBJ.              0XMSDA ....*....SOURCE STATEMENT....7....*....8....*....9....*....0....*....1....*....2....*....3....*....4....*....5....*....6....*....7....*....8....*....9....*....0
+
+     1                                  ;/*********************************************************************
+     2                                  ;*
+     3                                  ;* Device     : M16C/60,30,20,10
+     4                                  ;* File Name  : ncrt0.a30
+     5                                  ;* Abstract   : Startup Program for M16C/60,30,20,10.
+     6                                  ;*
+     7                                  ;* Copyright (C) 2009 (2010) Renesas Electronics Corporation.
+     8                                  ;* and Renesas Solutions Corporation. All rights reserved.
+     9                                  ;* and Medified by S.Nankaku 2021-07-30
+    10                                  ;*********************************************************************/
+    11                                  
+    12                                  ;---------------------------------------------------------------------
+    13                                  ; include files
+    14                                  ;---------------------------------------------------------------------
+    15                                  		.list		OFF
+    16                                  		.list		ON
+    17                                  
+    18                                  ;---------------------------------------------------------------------
+    19                                  ; 20210730 S.Nankaku
+    20                                  ;---------------------------------------------------------------------
+    21                                  							
+    22  0000000Ah                       PRCR	.equ	000ah					; プロテクトレジスタ
+    23  00000004h                       PM0		.equ	0004h					; プロセッサモードレジスタ 0
+    24  00000005h                       PM1		.equ	0005h					; プロセッサモードレジスタ 1
+    25  00000006h                       CM0		.equ	0006h					; システムクロック制御レジスタ 0
+    26  00000007h                       CM1		.equ	0007h					; システムクロック制御レジスタ 1
+    27  0000000Ch                       CM2		.equ	000ch					; システムクロック制御レジスタ 2
+    28  0000001Ch                       PLC0	.equ	001ch					; PLL制御レジスタ0
+    29  00000008h                       CSR		.equ	0008h					; チップセレクト制御レジスタ
+    30  0000001Eh                       PM2		.equ	001Eh					; プロセッサモードレジスタ 2
+    31  0000001Bh                       CSE		.equ	001Bh					; チップセレクトウェイト	62P
+    32                                  
+    33  00000000h                       USE_MEMALLOC	.equ	0 				; 1:メモリ管理関数使用(malloc等)
+    34                                  										; 0:未使用
+    35  00000000h                       USE_STDIO	.equ	0					; 1:標準入出力関数使用(printf等)
+    36                                  										; 0:未使用
+    37                                  
+    38  00000001h                       M62TYPE		.equ	1					; M16C/62を使用
+    39  000FF900h                       KDVECTOR	.equ	0FF900h				; ver 3.00
+    40                                  
+    41                                  
+    42                                  ;---------------------------------------------------------------------
+    43                                  ; BankSelect definition for 4M mode
+    44                                  ;---------------------------------------------------------------------
+    45                                  ;		.glb		__BankSelect
+    46                                  ;__BankSelect	.equ	0BH
+    47                                  
+    48                                  ;=====================================================================
+    49                                  ; Interrupt section start
+    50                                  ;---------------------------------------------------------------------
+    51                                  		.insf		start,S,0
+    52                                  		.glb		start
+    53                                  		.section	interrupt
+    54  00000                           start:
+    55                                  ;---------------------------------------------------------------------
+    56                                  ; after reset,this program will start
+    57                                  ;---------------------------------------------------------------------
+    58                                  
+    59  00000  EB400000r                	ldc	#istack_top,isp			;set istack pointer
+    60                                  	
+    61  00004  C7030A00              S  	mov.b	#00000011b, PRCR	;プロセッサモードレジスタPM0,1への書き込み許可 
+    62                                  
+* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Tue Oct 18 04:37:09 2022  PAGE 002
+
+  SEQ.  LOC.   OBJ.              0XMSDA ....*....SOURCE STATEMENT....7....*....8....*....9....*....0....*....1....*....2....*....3....*....4....*....5....*....6....*....7....*....8....*....9....*....0
+
+    63  00008  B70400                Z  	mov.b	#00000000b, PM0		;PM0: single chip mode / P40-43=I/O
+    64  0000B  C7080500              S  	mov.b	#00001000b, PM1		;PM1: Normal/No Wait memory192/15 BLOCK_A=able P37-34=I/O
+    65  0000F  B71E00                Z  	mov.b	#00000000b, PM2		;PM2: 
+    66                                  	
+    67  00012  C7080600              S  	mov.b	#00001000b, CM0		;メインクロック分周なし(CM16,17有効) 6MHz
+    68  00016  C7200700              S  	mov.b	#00100000b, CM1		;CM16,17=0　分周なし 一旦メインクロック選択 
+    69  0001A  B70C00                Z  	mov.b	#00000000b, CM2		;
+    70  0001D  C7921C00              S  	mov.b	#10010010b, PLC0	;PLL動作　4逓倍 6 * 4 = 24MHz
+    71  00021  C7220700              S  	mov.b	#00100010b, CM1		;CM16,17=0　分周なし システムクロックとしてPLLクロック選択(24MHz)
+    72                                  
+    73  00025  B70A00                Z  	mov.b	#00000000b, PRCR	;プロセッサモードレジスタPM0,1への書き込み禁止
+    74                                  
+    75  00028  EB308000                 	ldc	#0080h,	flg				;ユーザスタックポインタ
+    76  0002C  EB500000r                	ldc	#stack_top,	sp			;set stack pointer 
+    77  00030  EB300000                 	ldc	#0000h,	flg				;インタラプトスタックポインタ 追加 
+    78                                  
+    79  00034  EB600004                 	ldc	#data_SE_top,sb			;set sb register 
+    80  00038  EB200F00                 	ldintb	#__VECTOR_ADR__		;set vector base
+               EB1000FD 
+    81                                  
+    82  00040  EB64                     	fset	i					;割り込み許可 
+    83                                  
+    84                                  ;=====================================================================
+    85                                  ; NEAR area initialize.
+    86                                  ;---------------------------------------------------------------------
+    87                                  ; bss zero clear
+    88                                  ;---------------------------------------------------------------------
+    89                                  		N_BZERO		bss_SE_top,bss_SE
+    90  00042  B4                1 M Z  		mov.b		#00H,R0L
+    91  00043  AA0000r           1 M S  		mov.w		#(bss_SE_top & 0FFFFH),A1
+    92  00046  75C30000r         1 M    		mov.w		#sizeof bss_SE,R3
+    93  0004A  7CEA              1 M    		sstr.b
+    94                           1 M    		.endm
+    95                                  		N_BZERO		bss_SO_top,bss_SO
+    96  0004C  B4                1 M Z  		mov.b		#00H,R0L
+    97  0004D  AA0000r           1 M S  		mov.w		#(bss_SO_top & 0FFFFH),A1
+    98  00050  75C30000r         1 M    		mov.w		#sizeof bss_SO,R3
+    99  00054  7CEA              1 M    		sstr.b
+   100                           1 M    		.endm
+   101                                  		N_BZERO		bss_NE_top,bss_NE
+   102  00056  B4                1 M Z  		mov.b		#00H,R0L
+   103  00057  AA0000r           1 M S  		mov.w		#(bss_NE_top & 0FFFFH),A1
+   104  0005A  75C30000r         1 M    		mov.w		#sizeof bss_NE,R3
+   105  0005E  7CEA              1 M    		sstr.b
+   106                           1 M    		.endm
+   107                                  		N_BZERO		bss_NO_top,bss_NO
+   108  00060  B4                1 M Z  		mov.b		#00H,R0L
+   109  00061  AA0000r           1 M S  		mov.w		#(bss_NO_top & 0FFFFH),A1
+   110  00064  75C30000r         1 M    		mov.w		#sizeof bss_NO,R3
+   111  00068  7CEA              1 M    		sstr.b
+   112                           1 M    		.endm
+   113                                  
+   114                                  ;---------------------------------------------------------------------
+   115                                  ; initialize data section
+   116                                  ;---------------------------------------------------------------------
+   117                                  		N_BCOPY		data_SEI_top,data_SE_top,data_SE
+   118  0006A  A20000r           1 M S  		mov.w		#(data_SEI_top & 0FFFFH),A0
+   119  0006D  74C300r           1 M    		mov.b		#(data_SEI_top >> 16),R1H
+   120  00070  AA0004            1 M S  		mov.w		#data_SE_top,A1
+   121  00073  75C30000r         1 M    		mov.w		#sizeof data_SE,R3
+   122  00077  7CE8              1 M    		smovf.b
+   123                           1 M    		.endm
+* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Tue Oct 18 04:37:09 2022  PAGE 003
+
+  SEQ.  LOC.   OBJ.              0XMSDA ....*....SOURCE STATEMENT....7....*....8....*....9....*....0....*....1....*....2....*....3....*....4....*....5....*....6....*....7....*....8....*....9....*....0
+
+   124                                  		N_BCOPY		data_SOI_top,data_SO_top,data_SO
+   125  00079  A20000r           1 M S  		mov.w		#(data_SOI_top & 0FFFFH),A0
+   126  0007C  74C300r           1 M    		mov.b		#(data_SOI_top >> 16),R1H
+   127  0007F  AA0000r           1 M S  		mov.w		#data_SO_top,A1
+   128  00082  75C30000r         1 M    		mov.w		#sizeof data_SO,R3
+   129  00086  7CE8              1 M    		smovf.b
+   130                           1 M    		.endm
+   131                                  		N_BCOPY		data_NEI_top,data_NE_top,data_NE
+   132  00088  A20000r           1 M S  		mov.w		#(data_NEI_top & 0FFFFH),A0
+   133  0008B  74C300r           1 M    		mov.b		#(data_NEI_top >> 16),R1H
+   134  0008E  AA0000r           1 M S  		mov.w		#data_NE_top,A1
+   135  00091  75C30000r         1 M    		mov.w		#sizeof data_NE,R3
+   136  00095  7CE8              1 M    		smovf.b
+   137                           1 M    		.endm
+   138                                  		N_BCOPY		data_NOI_top,data_NO_top,data_NO
+   139  00097  A20000r           1 M S  		mov.w		#(data_NOI_top & 0FFFFH),A0
+   140  0009A  74C300r           1 M    		mov.b		#(data_NOI_top >> 16),R1H
+   141  0009D  AA0000r           1 M S  		mov.w		#data_NO_top,A1
+   142  000A0  75C30000r         1 M    		mov.w		#sizeof data_NO,R3
+   143  000A4  7CE8              1 M    		smovf.b
+   144                           1 M    		.endm
+   145                                  
+   146                                  ;=====================================================================
+   147                                  ; FAR area initialize.
+   148                                  ;---------------------------------------------------------------------
+   149                                  ; bss zero clear
+   150                                  ;---------------------------------------------------------------------
+   151                                  .if __FAR_RAM_FLG__ != 0
+   152                                  .endif
+   153                                  
+   154                                  ;---------------------------------------------------------------------
+   155                                  ; initialize data section
+   156                                  ;---------------------------------------------------------------------
+   157                                  .if __FAR_RAM_FLG__ != 0
+   158                            X     .if __STACKSIZE__ != 0
+   159                            X     .else
+   160                            X     .endif
+   161                                  .endif
+   162                                  
+   163                                  ;=====================================================================
+   164                                  ; heap area initialize
+   165                                  ;---------------------------------------------------------------------
+   166                                  .if __HEAPSIZE__ != 0
+   167                                  .endif
+   168                                  
+   169                                  ;=====================================================================
+   170                                  ; Initialize standard I/O
+   171                                  ;---------------------------------------------------------------------
+   172                                  .if __STANDARD_IO__ == 1
+   173                                  .endif
+   174                                  
+   175                                  ;=====================================================================
+   176                                  ; Call main() function
+   177                                  ;---------------------------------------------------------------------
+   178  000A6  EB700000                 		ldc			#0h,fb				; for debuger
+   179                                  
+   180                                  		.glb		_main
+   181  000AA  FD000000r             A  		jsr.a		_main
+   182                                  
+   183                                  ;=====================================================================
+   184                                  ; exit() function
+   185                                  ;---------------------------------------------------------------------
+* R8C/Tiny,M16C/60 SERIES ASSEMBLER *   SOURCE LIST       Tue Oct 18 04:37:09 2022  PAGE 004
+
+  SEQ.  LOC.   OBJ.              0XMSDA ....*....SOURCE STATEMENT....7....*....8....*....9....*....0....*....1....*....2....*....3....*....4....*....5....*....6....*....7....*....8....*....9....*....0
+
+   186                                  		.glb		_exit
+   187                                  		.glb		$exit
+   188  000AE                           _exit:									; End program
+   189  000AE                           $exit:
+   190  000AE  FEFF                  B  		jmp			_exit
+   191                                  		.einsf
+   192                                  ;=====================================================================
+   193                                  ; dummy interrupt function
+   194                                  ;---------------------------------------------------------------------
+   195                                  		.glb		dummy_int
+   196  000B0                           dummy_int:
+   197  000B0  FB                       		reit
+   198                                  
+   199                                  		.end
+
+Information List
+
+TOTAL ERROR(S)    00000
+TOTAL WARNING(S)  00000
+TOTAL LINE(S)     00199   LINES
+
+Section List
+
+Attr        Size          Name
+DATA     0000000(00000H)  data_SE
+DATA     0000000(00000H)  bss_SE
+DATA     0000000(00000H)  data_SO
+DATA     0000000(00000H)  bss_SO
+DATA     0000000(00000H)  data_NE
+DATA     0000000(00000H)  bss_NE
+DATA     0000000(00000H)  data_NO
+DATA     0000000(00000H)  bss_NO
+DATA     0000768(00300H)  istack
+DATA     0000768(00300H)  stack
+ROMDATA  0000000(00000H)  rom_FE
+ROMDATA  0000000(00000H)  rom_FO
+ROMDATA  0000000(00000H)  data_SEI
+ROMDATA  0000000(00000H)  data_SOI
+ROMDATA  0000000(00000H)  data_NEI
+ROMDATA  0000000(00000H)  data_NOI
+CODE     0000000(00000H)  program
+CODE     0000000(00000H)  interrupt
+CODE     0000000(00000H)  program_S
+ROMDATA  0000256(00100H)  vector
+ROMDATA  0000036(00024H)  fvector
+CODE     0000177(000B1H)  interrupt

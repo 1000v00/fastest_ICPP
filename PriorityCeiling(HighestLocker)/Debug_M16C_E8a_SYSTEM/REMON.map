@@ -1,0 +1,339 @@
+##########################################
+# (1) LINK INFORMATION                   #
+##########################################
+c:\program files (x86)\renesas\hew_001\tools\renesas\nc30wa\v545r01\bin\ln30.exe @C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\REMON.m16cl
+
+# ID CODE DATA
+.ID  "#FFFFFFFFFFFFFF"
+
+# ROM CODE PROTECT DATA
+.PROTECT  FFH
+
+# LINK FILE INFORMATION
+ncrt0 (C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\ncrt0.r30)
+	Oct 19 14:43:11 2024
+
+dispatcher (C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\dispatcher.r30)
+	Oct 19 14:43:10 2024
+
+icb (C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\icb.r30)
+	Oct 19 14:43:10 2024
+
+REMON (C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\REMON.r30)
+	Oct 19 14:43:10 2024
+
+semaphore (C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\semaphore.r30)
+	Oct 19 14:43:11 2024
+
+svc (C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\svc.r30)
+	Oct 19 14:43:11 2024
+
+task (C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\task.r30)
+	Oct 19 14:43:11 2024
+
+memcpy (c:\program files (x86)\renesas\hew_001\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib)
+	Jan  6 15:04:56 2010
+
+memset (c:\program files (x86)\renesas\hew_001\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib)
+	Jan  6 15:04:57 2010
+
+
+##########################################
+# (2) SECTION INFORMATION                #
+##########################################
+# SECTION                        ATR TYPE    START  LENGTH ALIGN MODULENAME
+data_SE                          ABS DATA    000400 000000       ncrt0
+bss_SE                           REL DATA    000400 000000 2     ncrt0
+data_SO                          REL DATA    000400 000000       ncrt0
+bss_SO                           REL DATA    000400 000000       ncrt0
+data_NE                          REL DATA    000400 000000 2     ncrt0
+bss_NE                           REL DATA    000400 000000 2     ncrt0
+                                 REL DATA    000400 000912 2     icb
+                                 REL DATA    000D12 000022 2     semaphore
+                                 REL DATA    000D34 000004 2     task
+data_NO                          REL DATA    000D38 000000       ncrt0
+bss_NO                           REL DATA    000D38 000000       ncrt0
+                                 REL DATA    000D38 000001       svc
+istack                           REL DATA    000D3A 000300 2     ncrt0
+stack                            REL DATA    00103A 000300 2     ncrt0
+rom_FE                           ABS ROMDATA 0A0000 000000       ncrt0
+                                 REL ROMDATA 0A0000 000018 2     svc
+rom_FO                           REL ROMDATA 0A0018 000000       ncrt0
+data_SEI                         REL ROMDATA 0A0018 000000 2     ncrt0
+data_SOI                         REL ROMDATA 0A0018 000000       ncrt0
+data_NEI                         REL ROMDATA 0A0018 000000 2     ncrt0
+data_NOI                         REL ROMDATA 0A0018 000000       ncrt0
+program                          REL CODE    0A0018 000000 2     ncrt0
+                                 REL CODE    0A0018 0000F1 2     dispatcher
+                                 REL CODE    0A010A 0000AE 2     icb
+                                 REL CODE    0A01B8 00011B 2     REMON
+                                 REL CODE    0A02D4 000121 2     semaphore
+                                 REL CODE    0A03F6 000066 2     svc
+                                 REL CODE    0A045C 000161 2     task
+                                 REL CODE    0A05BE 000053 2     memcpy
+                                 REL CODE    0A0612 00003F 2     memset
+interrupt                        REL CODE    0A0652 000000 2     ncrt0
+                                 REL CODE    0A0652 0000B1       ncrt0
+program_S                        REL CODE    0A0704 000000 2     ncrt0
+vector                           ABS ROMDATA 0FFD00 000100       ncrt0
+fvector                          ABS ROMDATA 0FFFDC 000024       ncrt0
+# Total -------------------------------------------------------------------
+                                     DATA           000F39(0003897) Byte(s)
+                                     ROMDATA        00013C(0000316) Byte(s)
+                                     CODE           0006EA(0001770) Byte(s)
+
+##########################################
+# (3) GLOBAL LABEL INFORMATION           #
+##########################################
+$cre_tsk           0a0492  $exit              0a0700  $ini_icb           0a010a
+$memset            0a0612  $pol_sem           0a032c  $sig_sem           0a031c
+$sta_tsk           0a04e8  $swp_icb           0a0156  $wai_sem           0a030c
+_bit_position      000d30  _dispatcher        0a001c  _exit              0a0700
+_ext_tsk           0a04f4  _g_icb             000400  _g_priority        000d00
+_g_semaphore       000d12  _g_stack           000500  _g_taskid          000d34
+_icb_temp          000d10  _ini_sem           0a02d4  _ini_tsk           0a045c
+_int_ope_num       000d38  _main              0a01b8  _memcpy            0a05be
+_scheduler         0a0018  _semid             000d2e  _svc_ext_tsk       0a057a
+_svc_handler       0a03f6  _svc_jump_table    0a0000  _svc_pol_sem       0a03ec
+_svc_sig_sem       0a03a0  _svc_sta_tsk       0a050c  _svc_wai_sem       0a0336
+_task0             0a026c  _task1             0a027e  _task2             0a0296
+_task3             0a02a0  _task4             0a02aa  _task5             0a02c0
+_task6             0a02ca  _taskid            000d36  _wup_tsk_id        000d2a
+_wup_tsk_id_mask   000d2c  dummy_int          0a0702  start              0a0652
+
+##########################################
+# (4) GLOBAL EQU SYMBOL INFORMATION      #
+##########################################
+__SB__           00000400  
+
+##########################################
+# (5) GLOBAL EQU BIT-SYMBOL INFORMATION  #
+##########################################
+
+##########################################
+# (6) LOCAL LABEL INFORMATION            #
+##########################################
+@ ncrt0 ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\ncrt0.r30 )
+@ dispatcher ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\dispatcher.r30 )
+@ icb ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\icb.r30 )
+@ REMON ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\REMON.r30 )
+@ semaphore ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\semaphore.r30 )
+@ svc ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\svc.r30 )
+@ task ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\task.r30 )
+@ memcpy ( c:\program files (x86)\renesas\hew_001\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+@ memset ( c:\program files (x86)\renesas\hew_001\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+
+##########################################
+# (7) LOCAL EQU SYMBOL INFORMATION       #
+##########################################
+@ ncrt0 ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\ncrt0.r30 )
+@ dispatcher ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\dispatcher.r30 )
+@ icb ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\icb.r30 )
+@ REMON ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\REMON.r30 )
+@ semaphore ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\semaphore.r30 )
+@ svc ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\svc.r30 )
+@ task ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\task.r30 )
+@ memcpy ( c:\program files (x86)\renesas\hew_001\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+@ memset ( c:\program files (x86)\renesas\hew_001\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+
+##########################################
+# (8) LOCAL EQU BIT-SYMBOL INFORMATION   #
+##########################################
+@ ncrt0 ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\ncrt0.r30 )
+@ dispatcher ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\dispatcher.r30 )
+@ icb ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\icb.r30 )
+@ REMON ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\REMON.r30 )
+@ semaphore ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\semaphore.r30 )
+@ svc ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\svc.r30 )
+@ task ( C:\Users\rechi\Documents\MT-GoogleDrive\å§ãÜ\èCò_REMON_souse\Time_Measurement\highestLockerProject\PriorityCeiling(HighestLocker)\Debug_M16C_E8a_SYSTEM\task.r30 )
+@ memcpy ( c:\program files (x86)\renesas\hew_001\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+@ memset ( c:\program files (x86)\renesas\hew_001\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+
+data_SE
+                                  00000400  00000400         0   1
+bss_SE
+                                  00000400  00000400         0   2
+data_SO
+                                  00000400  00000400         0   1
+bss_SO
+                                  00000400  00000400         0   1
+data_NE
+                                  00000400  00000400         0   2
+bss_NE
+                                  00000400  00000d37       938   2
+data_NO
+                                  00000d38  00000d38         0   1
+bss_NO
+                                  00000d38  00000d38         1   1
+istack
+                                  00000d3a  00001039       300   2
+stack
+                                  0000103a  00001339       300   2
+rom_FE
+                                  000a0000  000a0017        18   1
+rom_FO
+                                  000a0018  000a0018         0   1
+data_SEI
+                                  000a0018  000a0018         0   2
+data_SOI
+                                  000a0018  000a0018         0   1
+data_NEI
+                                  000a0018  000a0018         0   2
+data_NOI
+                                  000a0018  000a0018         0   1
+program
+                                  000a0018  000a0650       639   2
+interrupt
+                                  000a0652  000a0702        b1   2
+program_S
+                                  000a0704  000a0704         0   2
+vector
+                                  000ffd00  000ffdff       100   1
+fvector
+                                  000fffdc  000fffff        24   1
+
+*** Symbol List ***
+
+SECTION=
+FILE=                               START        END    SIZE
+  SYMBOL                            ADDR        SIZE    INFO      COUNTS  OPT
+
+SECTION=data_SE
+FILE=ncrt0
+                                  00000400  00000400         0
+  __SB__
+                                  00000400         0   none ,g         0
+
+SECTION=bss_NE
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/icb
+                                  00000400  00000d11       912
+  _g_icb
+                                  00000400       100   data ,g         0
+  _g_stack
+                                  00000500       800   data ,g         0
+  _g_priority
+                                  00000d00        10   data ,g         0
+  _icb_temp
+                                  00000d10         2   data ,g         0
+
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/semaphore
+                                  00000d12  00000d33        22
+  _g_semaphore
+                                  00000d12        18   data ,g         0
+  _wup_tsk_id
+                                  00000d2a         2   data ,g         0
+  _wup_tsk_id_mask
+                                  00000d2c         2   data ,g         0
+  _semid
+                                  00000d2e         2   data ,g         0
+  _bit_position
+                                  00000d30         2   data ,g         0
+
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/task
+                                  00000d34  00000d37         4
+  _g_taskid
+                                  00000d34         2   data ,g         0
+  _taskid
+                                  00000d36         2   data ,g         0
+
+SECTION=data_NO
+FILE=ncrt0
+                                  00000d38  00000d38         0
+  _int_ope_num
+                                  00000d38         1   data ,g         0
+
+SECTION=rom_FE
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/svc
+                                  000a0000  000a0017        18
+  _svc_jump_table
+                                  000a0000        18   data ,g         0
+
+SECTION=program
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/dispatcher
+                                  000a0018  000a0108        f1
+  _scheduler
+                                  000a0018         4   func ,g         0
+  _dispatcher
+                                  000a001c        ed   func ,g         0
+
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/icb
+                                  000a010a  000a01b7        ae
+  $ini_icb
+                                  000a010a        4c   func ,g         0
+  $swp_icb
+                                  000a0156        62   func ,g         0
+
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/REMON
+                                  000a01b8  000a02d2       11b
+  _main
+                                  000a01b8        b4   func ,g         0
+  _task0
+                                  000a026c        11   func ,g         0
+  _task1
+                                  000a027e        18   func ,g         0
+  _task2
+                                  000a0296         a   func ,g         0
+  _task3
+                                  000a02a0         a   func ,g         0
+  _task4
+                                  000a02aa        16   func ,g         0
+  _task5
+                                  000a02c0         a   func ,g         0
+
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/semaphore
+                                  000a02d4  000a03f4       121
+  _ini_sem
+                                  000a02d4        38   func ,g         0
+  $wai_sem
+                                  000a030c         f   func ,g         0
+  $sig_sem
+                                  000a031c        10   func ,g         0
+  $pol_sem
+                                  000a032c         b   func ,g         0
+  _svc_wai_sem
+                                  000a0336        69   func ,g         0
+  _svc_sig_sem
+                                  000a03a0        4c   func ,g         0
+
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/svc
+                                  000a03f6  000a045b        66
+  _svc_handler
+                                  000a03f6        66   func ,g         0
+
+FILE=C:/Users/rechi/Documents/MT-GoogleDrive/å§ãÜ/èCò_REMON_souse/Time_Measurement/highestLockerProject/PriorityCeiling(HighestLocker)/task
+                                  000a045c  000a05bc       161
+  _ini_tsk
+                                  000a045c        35   func ,g         0
+  $cre_tsk
+                                  000a0492        56   func ,g         0
+  $sta_tsk
+                                  000a04e8         c   func ,g         0
+  _ext_tsk
+                                  000a04f4        19   func ,g         0
+  _svc_sta_tsk
+                                  000a050c        6d   func ,g         0
+
+FILE=memcpy
+                                  000a05be  000a0610        53
+  _memcpy
+                                  000a05be        53   func ,g         0
+
+FILE=memset
+                                  000a0612  000a0650        3f
+  $memset
+                                  000a0612        3f   func ,g         0
+
+SECTION=interrupt
+FILE=ncrt0
+                                  000a0652  000a0702        b1
+  $exit
+                                  000a0700         0   none ,g         0
+  _exit
+                                  000a0700         0   none ,g         0
+  dummy_int
+                                  000a0702         0   none ,g         0
+

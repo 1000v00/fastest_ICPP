@@ -1,0 +1,364 @@
+##########################################
+# (1) LINK INFORMATION                   #
+##########################################
+c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\bin\ln30.exe @C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\REMON.m16cl
+
+# ID CODE DATA
+.ID  "#FFFFFFFFFFFFFF"
+
+# ROM CODE PROTECT DATA
+.PROTECT  FFH
+
+# LINK FILE INFORMATION
+ncrt0 (C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\ncrt0.r30)
+	Oct 18 04:37:09 2022
+
+dispatcher (C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\dispatcher.r30)
+	Oct 18 04:37:07 2022
+
+icb (C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\icb.r30)
+	Oct 18 04:37:07 2022
+
+REMON (C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\REMON.r30)
+	Oct 18 04:37:07 2022
+
+semaphore (C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\semaphore.r30)
+	Oct 18 04:37:08 2022
+
+svc (C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\svc.r30)
+	Oct 18 04:37:08 2022
+
+task (C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\task.r30)
+	Oct 18 04:37:08 2022
+
+_i4div (c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib)
+	Jan  6 15:04:38 2010
+
+memcpy (c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib)
+	Jan  6 15:04:56 2010
+
+memset (c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib)
+	Jan  6 15:04:57 2010
+
+
+##########################################
+# (2) SECTION INFORMATION                #
+##########################################
+# SECTION                        ATR TYPE    START  LENGTH ALIGN MODULENAME
+data_SE                          ABS DATA    000400 000000       ncrt0
+bss_SE                           REL DATA    000400 000000 2     ncrt0
+data_SO                          REL DATA    000400 000000       ncrt0
+bss_SO                           REL DATA    000400 000000       ncrt0
+data_NE                          REL DATA    000400 000000 2     ncrt0
+                                 REL DATA    000400 000002 2     REMON
+bss_NE                           REL DATA    000402 000000 2     ncrt0
+                                 REL DATA    000402 000902 2     icb
+                                 REL DATA    000D04 000004 2     REMON
+                                 REL DATA    000D08 000018 2     semaphore
+                                 REL DATA    000D20 000004 2     task
+data_NO                          REL DATA    000D24 000000       ncrt0
+bss_NO                           REL DATA    000D24 000000       ncrt0
+                                 REL DATA    000D24 000001       svc
+istack                           REL DATA    000D26 000300 2     ncrt0
+stack                            REL DATA    001026 000300 2     ncrt0
+rom_FE                           ABS ROMDATA 0A0000 000000       ncrt0
+                                 REL ROMDATA 0A0000 000018 2     svc
+rom_FO                           REL ROMDATA 0A0018 000000       ncrt0
+data_SEI                         REL ROMDATA 0A0018 000000 2     ncrt0
+data_SOI                         REL ROMDATA 0A0018 000000       ncrt0
+data_NEI                         REL ROMDATA 0A0018 000000 2     ncrt0
+                                 REL ROMDATA 0A0018 000002       REMON
+data_NOI                         REL ROMDATA 0A001A 000000       ncrt0
+program                          REL CODE    0A001A 000000 2     ncrt0
+                                 REL CODE    0A001A 0000D8 2     dispatcher
+                                 REL CODE    0A00F2 0000A4 2     icb
+                                 REL CODE    0A0196 0005D5 2     REMON
+                                 REL CODE    0A076C 0001BB 2     semaphore
+                                 REL CODE    0A0928 000066 2     svc
+                                 REL CODE    0A098E 000161 2     task
+                                 REL CODE    0A0AF0 000083 2     _i4div
+                                 REL CODE    0A0B74 000053 2     memcpy
+                                 REL CODE    0A0BC8 00003F 2     memset
+interrupt                        REL CODE    0A0C08 000000 2     ncrt0
+                                 REL CODE    0A0C08 0000B1       ncrt0
+program_S                        REL CODE    0A0CBA 000000 2     ncrt0
+vector                           ABS ROMDATA 0FFD00 000100       ncrt0
+fvector                          ABS ROMDATA 0FFFDC 000024       ncrt0
+# Total -------------------------------------------------------------------
+                                     DATA           000F25(0003877) Byte(s)
+                                     ROMDATA        00013E(0000318) Byte(s)
+                                     CODE           000C9E(0003230) Byte(s)
+
+##########################################
+# (3) GLOBAL LABEL INFORMATION           #
+##########################################
+$cre_tsk           0a09c4  $exit              0a0cb6  $ini_icb           0a00f2
+$memset            0a0bc8  $pol_sem           0a07a8  $sig_sem           0a079c
+$sta_tsk           0a0a1a  $swp_icb           0a0134  $wai_sem           0a0790
+__i4div            0a0af0  _dispatcher        0a001e  _exit              0a0cb6
+_ext_tsk           0a0a26  _g_icb             000402  _g_semaphore       000d08
+_g_stack           000502  _g_taskid          000d20  _icb_temp          000d02
+_ini_sem           0a076c  _ini_tsk           0a098e  _int0              0a075c
+_int1              0a0764  _int_ope_num       000d24  _main              0a0196
+_memcpy            0a0b74  _scheduler         0a001a  _semid             000d1c
+_svc_ext_tsk       0a0aac  _svc_handler       0a0928  _svc_jump_table    0a0000
+_svc_pol_sem       0a091e  _svc_sig_sem       0a085e  _svc_sta_tsk       0a0a3e
+_svc_wai_sem       0a07b2  _ta0int            0a06e6  _ta1int            0a06fe
+_task0             0a0298  _task1             0a037c  _task2             0a0716
+_task3             0a0724  _task4             0a0732  _task5             0a0740
+_task6             0a052c  _task7             0a074e  _taskid            000d22
+_wup_tsk_id        000d18  _wup_tsk_id_mask   000d1a  dummy_int          0a0cb8
+start              0a0c08  
+
+##########################################
+# (4) GLOBAL EQU SYMBOL INFORMATION      #
+##########################################
+__SB__           00000400  
+
+##########################################
+# (5) GLOBAL EQU BIT-SYMBOL INFORMATION  #
+##########################################
+
+##########################################
+# (6) LOCAL LABEL INFORMATION            #
+##########################################
+@ ncrt0 ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\ncrt0.r30 )
+@ dispatcher ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\dispatcher.r30 )
+@ icb ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\icb.r30 )
+@ REMON ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\REMON.r30 )
+@ semaphore ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\semaphore.r30 )
+@ svc ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\svc.r30 )
+@ task ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\task.r30 )
+@ _i4div ( c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+@ memcpy ( c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+@ memset ( c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+
+##########################################
+# (7) LOCAL EQU SYMBOL INFORMATION       #
+##########################################
+@ ncrt0 ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\ncrt0.r30 )
+@ dispatcher ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\dispatcher.r30 )
+@ icb ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\icb.r30 )
+@ REMON ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\REMON.r30 )
+@ semaphore ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\semaphore.r30 )
+@ svc ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\svc.r30 )
+@ task ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\task.r30 )
+@ _i4div ( c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+@ memcpy ( c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+@ memset ( c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+
+##########################################
+# (8) LOCAL EQU BIT-SYMBOL INFORMATION   #
+##########################################
+@ ncrt0 ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\ncrt0.r30 )
+@ dispatcher ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\dispatcher.r30 )
+@ icb ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\icb.r30 )
+@ REMON ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\REMON.r30 )
+@ semaphore ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\semaphore.r30 )
+@ svc ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\svc.r30 )
+@ task ( C:\WorkSpace\EMB2022_Workspace\REMON\Debug_M16C_E8a_SYSTEM\task.r30 )
+@ _i4div ( c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+@ memcpy ( c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+@ memset ( c:\program files (x86)\renesas\hew\tools\renesas\nc30wa\v545r01\lib30\nc30lib.lib )
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+
+data_SE
+                                  00000400  00000400         0   1
+bss_SE
+                                  00000400  00000400         0   2
+data_SO
+                                  00000400  00000400         0   1
+bss_SO
+                                  00000400  00000400         0   1
+data_NE
+                                  00000400  00000401         2   2
+bss_NE
+                                  00000402  00000d23       922   2
+data_NO
+                                  00000d24  00000d24         0   1
+bss_NO
+                                  00000d24  00000d24         1   1
+istack
+                                  00000d26  00001025       300   2
+stack
+                                  00001026  00001325       300   2
+rom_FE
+                                  000a0000  000a0017        18   1
+rom_FO
+                                  000a0018  000a0018         0   1
+data_SEI
+                                  000a0018  000a0018         0   2
+data_SOI
+                                  000a0018  000a0018         0   1
+data_NEI
+                                  000a0018  000a0019         2   2
+data_NOI
+                                  000a001a  000a001a         0   1
+program
+                                  000a001a  000a0c06       bed   2
+interrupt
+                                  000a0c08  000a0cb8        b1   2
+program_S
+                                  000a0cba  000a0cba         0   2
+vector
+                                  000ffd00  000ffdff       100   1
+fvector
+                                  000fffdc  000fffff        24   1
+
+*** Symbol List ***
+
+SECTION=
+FILE=                               START        END    SIZE
+  SYMBOL                            ADDR        SIZE    INFO      COUNTS  OPT
+
+SECTION=data_SE
+FILE=ncrt0
+                                  00000400  00000400         0
+  __SB__
+                                  00000400         0   none ,g         0
+
+SECTION=bss_NE
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/icb
+                                  00000402  00000d03       902
+  _g_icb
+                                  00000402       100   data ,g         0
+  _g_stack
+                                  00000502       800   data ,g         0
+  _icb_temp
+                                  00000d02         2   data ,g         0
+
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/semaphore
+                                  00000d08  00000d1f        18
+  _g_semaphore
+                                  00000d08        10   data ,g         0
+  _wup_tsk_id
+                                  00000d18         2   data ,g         0
+  _wup_tsk_id_mask
+                                  00000d1a         2   data ,g         0
+  _semid
+                                  00000d1c         2   data ,g         0
+
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/task
+                                  00000d20  00000d23         4
+  _g_taskid
+                                  00000d20         2   data ,g         0
+  _taskid
+                                  00000d22         2   data ,g         0
+
+SECTION=data_NO
+FILE=ncrt0
+                                  00000d24  00000d24         0
+  _int_ope_num
+                                  00000d24         1   data ,g         0
+
+SECTION=rom_FE
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/svc
+                                  000a0000  000a0017        18
+  _svc_jump_table
+                                  000a0000        18   data ,g         0
+
+SECTION=program
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/dispatcher
+                                  000a001a  000a00f1        d8
+  _scheduler
+                                  000a001a         4   func ,g         0
+  _dispatcher
+                                  000a001e        d4   func ,g         0
+
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/icb
+                                  000a00f2  000a0195        a4
+  $ini_icb
+                                  000a00f2        42   func ,g         0
+  $swp_icb
+                                  000a0134        62   func ,g         0
+
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/REMON
+                                  000a0196  000a076a       5d5
+  _main
+                                  000a0196       101   func ,g         0
+  _task0
+                                  000a0298        e4   func ,g         0
+  _task1
+                                  000a037c       1b0   func ,g         0
+  _task6
+                                  000a052c       1bb   func ,g         0
+  _ta0int
+                                  000a06e6        17   func ,g         0
+  _ta1int
+                                  000a06fe        18   func ,g         0
+  _task2
+                                  000a0716         e   func ,g         0
+  _task3
+                                  000a0724         e   func ,g         0
+  _task4
+                                  000a0732         e   func ,g         0
+  _task5
+                                  000a0740         e   func ,g         0
+  _task7
+                                  000a074e         e   func ,g         0
+  _int0
+                                  000a075c         8   func ,g         0
+
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/semaphore
+                                  000a076c  000a0926       1bb
+  _ini_sem
+                                  000a076c        24   func ,g         0
+  $wai_sem
+                                  000a0790         b   func ,g         0
+  $sig_sem
+                                  000a079c         c   func ,g         0
+  $pol_sem
+                                  000a07a8         b   func ,g         0
+  _svc_wai_sem
+                                  000a07b2        ab   func ,g         0
+  _svc_sig_sem
+                                  000a085e        c1   func ,g         0
+  _svc_pol_sem
+                                  000a091e         9   func ,g         0
+
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/svc
+                                  000a0928  000a098d        66
+  _svc_handler
+                                  000a0928        66   func ,g         0
+
+FILE=C:/WorkSpace/EMB2022_Workspace/REMON/task
+                                  000a098e  000a0aee       161
+  _ini_tsk
+                                  000a098e        35   func ,g         0
+  $cre_tsk
+                                  000a09c4        56   func ,g         0
+  $sta_tsk
+                                  000a0a1a         c   func ,g         0
+  _ext_tsk
+                                  000a0a26        19   func ,g         0
+  _svc_sta_tsk
+                                  000a0a3e        6d   func ,g         0
+
+FILE=_i4div
+                                  000a0af0  000a0b72        83
+  __i4div
+                                  000a0af0        83   func ,g         0
+
+FILE=memcpy
+                                  000a0b74  000a0bc6        53
+  _memcpy
+                                  000a0b74        53   func ,g         0
+
+FILE=memset
+                                  000a0bc8  000a0c06        3f
+  $memset
+                                  000a0bc8        3f   func ,g         0
+
+SECTION=interrupt
+FILE=ncrt0
+                                  000a0c08  000a0cb8        b1
+  $exit
+                                  000a0cb6         0   none ,g         0
+  _exit
+                                  000a0cb6         0   none ,g         0
+  dummy_int
+                                  000a0cb8         0   none ,g         0
+
